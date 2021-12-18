@@ -104,7 +104,7 @@ class BaseOptions():
         print(message)
 
         # save to the disk
-        expr_dir = os.path.join(opt.checkpoints_dir, opt.name)
+        expr_dir = os.path.join(opt.checkpoints_dir, opt.name+'-'+str(opt.num_layers))
         util.mkdirs(expr_dir)
         file_name = os.path.join(expr_dir, '{}_opt.txt'.format(opt.phase))
         with open(file_name, 'wt') as opt_file:

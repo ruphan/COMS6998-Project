@@ -41,7 +41,7 @@ if __name__ == '__main__':
     model.setup(opt)               # regular setup: load and print networks; create schedulers
     visualizer = Visualizer(opt)   # create a visualizer that display/save images and plots
     total_iters = 0                # the total number of training iterations
-    log_name = os.path.join(opt.checkpoints_dir, opt.name, 'loss_log.csv')
+    log_name = os.path.join(opt.checkpoints_dir, opt.name+'-'+str(opt.num_layers), 'loss_log.csv')
     save_logs = np.array(['Epoch','iters', 'time/iters', 'data/iters', 'D_A', 'G_A', 'cycle_A', 'idt_A', 'D_B', 'G_B', 'cycle_B', 'idt_B'])
     save_csv = '{}_{}_{}.csv'.format(gpu_name, opt.name, opt.num_layers)
     for epoch in range(opt.epoch_count, opt.n_epochs + opt.n_epochs_decay + 1):    # outer loop for different epochs; we save the model by <epoch_count>, <epoch_count>+<save_latest_freq>
@@ -83,8 +83,8 @@ if __name__ == '__main__':
                 # with open(log_name, "s") as log_file:
                 for l, img in visuals.items():
                     im = util.util.tensor2im(img)
-                    image_name = '%s_%s.png' % ("images_" + opt.name+'-'+opt.num_layers, l)
-                    save_path = os.path.join("checkpoints/" + opt.name+'-'+opt.num_layers + "/web/images/", image_name)
+                    image_name = '%s_%s.png' % ("images_" + opt.name+'-'+str(opt.num_layers), l)
+                    save_path = os.path.join("checkpoints/" + opt.name+'-'+str(opt.num_layers) + "/web/images/", image_name)
                     util.util.save_image(im, save_path, aspect_ratio=1.0)
 
             if total_iters % opt.save_latest_freq == 0:   # cache our latest model every <save_latest_freq> iterations
