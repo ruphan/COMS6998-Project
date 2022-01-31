@@ -1,7 +1,8 @@
 # Performance Modeling and Analysis of Unsupervised Domain Adaptation for Autonomous Driving
 ## Project Description:
 Deep learning has become one of the widely used tools in autonomous vehicles to solve tasks like semantic segmentation and object detection. With the evergrowing size of neural networks, the demand for a massive good quality labeled dataset is high. Manually labeling datasets to train giant neural networks have practically become impossible due to the sheer growth in the network size in recent years. Sim2Real is a domain adapatation is a technique that can make use of simulators to genrate huge datatsets and transfer the model learned on simulated dataset to generalize on real datasets.With extensive work going on in the the field, it is crucial to analyse and model the performance of these networks in terms of training time, dataloading time and predicting the loss metrics.\
-In this project we use CycleGAN as to peform image-to-image translation from synthetic datasets to real datasets and model the performance. The implementation details of the DL jobs that were ran to collect data are given below: \
+In this project we use CycleGAN as to peform image-to-image translation from synthetic datasets to real datasets and model the performance. The implementation details of the DL jobs that were ran to collect data are given below:
+
 **Input-Output dataset:** VKITTI-KITTI, VKITTI-Cityscapes, Synthia-KITTI, Synthia-Cityscapes \
 **GPUs used:** V100 (DGX), P100 (GCP), K80 (Colab), RTX3060 (Mobile) \
 **Network configuration:** Varying ResNet block sizes in the generator network starting from 3 to 9 \
@@ -28,7 +29,7 @@ The ```CycleGAN``` folder contains a slightly modified version of the original C
 ## Code execution sample commands:
 ```
 cd CycleGAN
-python CycleGAN/train.py --name VKITTI-KITTI --num_layers 9 --gpu_ids 0,1 --batch_size 16
+python train.py --name VKITTI-KITTI --num_layers 9 --gpu_ids 0,1 --batch_size 16
 
 mv *.csv ../
 mkdir results && mv *.csv results/
